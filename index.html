@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>List Editor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Create & Edit Lists</h1>
+
+    <table style="width: 100%;">
+        <tr>
+            <td>
+                Input...<br>
+                <textarea style="width: 90%; height: 60px" id="input-text-to-edit" placeholder="Enter text here..."></textarea>
+            </td>
+            <td>
+                Output...<br>
+                <textarea style="width: 90%; height: 60px" id="output-text" placeholder="" disabled></textarea>
+            </td>
+        </tr>
+    </table>
+    
+    <br>
+    <button id="btn-list-to-json">⭐ Convert List to JSON array</button>
+    <br><br>
+    <button id="btn-remove-numbers">Remove Numbers</button>
+    <button id="btn-remove-punctuation">Remove Punctuation</button>
+    <br><br>
+    <div>Remove Numbers, Colons, & Extra White Space</div>
+    <button id="btn-remove-numbers-colons-spaces">Clean up!</button>
+    <br><br>
+    <div>Convert list to array (Make sure each item is on a new line!)</div><button id="btn-convert-to-array-new-line-items">Convert!</button>
+
+    <hr>
+
+    <h2>Create Custom Lists</h2>
+    <button id="btn-create-new-list">Create New List</button>
+    <div id="list-container"></div>
+    
+    <script src="script.js"></script>
+        
+</body>
+</html>
