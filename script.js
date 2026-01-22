@@ -6,6 +6,7 @@ const btnRemovePunctuation = document.getElementById("btn-remove-punctuation");
 const btnRemoveNumbersColonsSpaces = document.getElementById("btn-remove-numbers-colons-spaces");
 const btnConvertToArrayNewLineItems = document.getElementById("btn-convert-to-array-new-line-items");
 const btnCreateNewList = document.getElementById('btn-create-new-list');
+const listContainer = document.getElementById('list-container');
 
 // LISTENERS
 btnCreateNewList.addEventListener('click', () => {
@@ -13,9 +14,23 @@ btnCreateNewList.addEventListener('click', () => {
     
     if (listTitle == null || listTitle == '') {
         return;
+    } else {
+        const column = document.createElement('div');
+        column.classList.add('flex-row');
+        const listColumn = document.createElement('textarea');
+        const title = document.createElement('h3');
+        title.textContent = listTitle;
+        //const lineBreak = document.createElement('br');
+        //lineBreak.classList.add('flex-row');
+        const button = document.createElement('button');
+        button.classList.add('flex-row');
+        button.textContent = "Random";
+        column.appendChild(title);
+        //column.appendChild(lineBreak);
+        column.appendChild(listColumn);
+        column.appendChild(button);
+        listContainer.appendChild(column);
     };
-
-
 });
 
 
