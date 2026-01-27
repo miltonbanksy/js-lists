@@ -2,6 +2,7 @@ const inputTextToEdit = document.getElementById("input-text-to-edit");
 const outputText = document.getElementById("output-text");
 const btnListToJSON = document.getElementById('btn-list-to-json');
 const btnFormatToNewLines = document.getElementById('btn-format-to-new-lines');
+const btnCapitalizeFirst = document.getElementById('btn-capitalize-first');
 const btnRemoveNumbers = document.getElementById("btn-remove-numbers");
 const btnRemovePunctuation = document.getElementById("btn-remove-punctuation");
 const btnRemoveNumbersColonsSpaces = document.getElementById("btn-remove-numbers-colons-spaces");
@@ -33,6 +34,21 @@ function displayOriginalText(text) {
     outputText.value = text;
 }
 
+function capitalizeFirst(text) {
+    text = text.toLowerCase();
+
+    const words = text.split(' ');
+
+    const capitalizedWords = words.map(word => {
+        if (word.length > 0) {
+            return word.charAt(0).toUpperCase + word.slice(1);
+        }
+        return word;
+    });
+
+    return capitalizedWords.join(' ');
+}
+
 btnFormatToNewLines.addEventListener('click', () => {
     let text = inputTextToEdit.value;
     displayOriginalText(text);
@@ -42,6 +58,12 @@ btnFormatToNewLines.addEventListener('click', () => {
         .join('\n');
 
     inputTextToEdit.value = formattedText;
+});
+
+btnCapitalizeFirst.addEventListener('click', () => {
+    let text = inputTextToEdit.value;
+    displayOriginalText(text);
+    inputTextToEdit.value = capitalizeFirst(text);
 });
 
 btnCreateNewList.addEventListener('click', () => {
@@ -77,20 +99,20 @@ btnListToJSON.addEventListener('click', () => {
 });
 
 btnRemoveNumbers.addEventListener("click", () => {
-    const originalString = inputTextToEdit.value; 
-    const originalString2 = removeNumbersFromString(originalString);
-    outputText.value = originalString2;
+    const text = inputTextToEdit.value;
+    displayOriginalText(text);
+    const originalString2 = removeNumbersFromString(text);
 });
 
 btnRemovePunctuation.addEventListener("click", () => {
-    const originalString = inputTextToEdit.value; 
-    const originalString2 = removePunctuationFromString(originalString);
-    outputText.value = originalString2;
+    const text = inputTextToEdit.value; 
+    displayOriginalText(text);
+    const originalString2 = removePunctuationFromString(text);
 });
 
 btnRemoveNumbersColonsSpaces.addEventListener('click', () => {
     const text = inputTextToEdit.value;
-    outputText.value = text;
+    displayOriginalText(text);
     const originalString2 = removeNumbersColonsSpaces(text);
     inputTextToEdit.value = originalString2;
 });
