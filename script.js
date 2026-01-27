@@ -34,18 +34,22 @@ function displayOriginalText(text) {
     outputText.value = text;
 }
 
+// Not doing as expected yet...
 function capitalizeFirst(text) {
     text = text.toLowerCase();
+    console.log(text)
 
-    const words = text.split(' ');
+    convertToArrayNewLineItems(text);
+    const words = text.split('\n');
 
     const capitalizedWords = words.map(word => {
         if (word.length > 0) {
-            return word.charAt(0).toUpperCase + word.slice(1);
+            return word.charAt(0).toUpperCase() + word.slice(1);
         }
         return word;
     });
 
+    console.log(capitalizedWords.join(' '))
     return capitalizedWords.join(' ');
 }
 
@@ -113,6 +117,11 @@ btnRemovePunctuation.addEventListener("click", () => {
 btnRemoveNumbersColonsSpaces.addEventListener('click', () => {
     const text = inputTextToEdit.value;
     displayOriginalText(text);
+    
+    
     const originalString2 = removeNumbersColonsSpaces(text);
-    inputTextToEdit.value = originalString2;
+    const createdArray = convertToArrayNewLineItems(originalString2);
+    inputTextToEdit.value = createdArray.join('<br>');
+    console.log(createdArray)
+    console.log(originalString2)
 });
