@@ -8,6 +8,27 @@ const btnRemoveNumbersColonsSpaces = document.getElementById("btn-remove-numbers
 const btnCreateNewList = document.getElementById('btn-create-new-list');
 const listContainer = document.getElementById('list-container');
 
+
+function removeNumbersFromString(str) {
+    return str.replace(/\d/g, '');
+};
+
+function removePunctuationFromString(str) {
+    return str.replace(/[^\w\s+]/g, '').trim();
+}
+
+function removeNumbersColonsSpaces(str) {
+    let cleanedString = str.replace(/[0-9:]/g, '');
+    // Replace multiple spaces with a single space and trim leading/trailing spaces
+    cleanedString = cleanedString.replace(/\s+/g, ' ').trim(); 
+
+    return cleanedString;
+};
+
+function convertToArrayNewLineItems(str) {
+    const createdArray = str.split(',').map(item => item.trim());
+    return createdArray;
+}
 function displayOriginalText(text) {
     outputText.value = text;
 }
@@ -47,7 +68,6 @@ btnCreateNewList.addEventListener('click', () => {
     };
 });
 
-
 btnListToJSON.addEventListener('click', () => {
     const text = inputTextToEdit.value;
     displayOriginalText(text);
@@ -74,26 +94,3 @@ btnRemoveNumbersColonsSpaces.addEventListener('click', () => {
     const originalString2 = removeNumbersColonsSpaces(text);
     inputTextToEdit.value = originalString2;
 });
-
-
-function removeNumbersFromString(str) {
-    return str.replace(/\d/g, '');
-};
-
-function removePunctuationFromString(str) {
-    return str.replace(/[^\w\s+]/g, '').trim();
-}
-
-function removeNumbersColonsSpaces(str) {
-    let cleanedString = str.replace(/[0-9:]/g, '');
-    
-    // Replace multiple spaces with a single space and trim leading/trailing spaces
-    cleanedString = cleanedString.replace(/\s+/g, ' ').trim(); 
-
-    return cleanedString;
-};
-
-function convertToArrayNewLineItems(str) {
-    const createdArray = str.split(',').map(item => item.trim());
-    return createdArray;
-}
