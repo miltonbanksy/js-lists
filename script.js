@@ -36,6 +36,8 @@ function displayOriginalText(text) {
 
 
 const btnSplitArrayOddEven = document.querySelector('#btn-split-array-odd-even');
+const array1Output = document.querySelector('#array1Output');
+const array2Output = document.querySelector('#array2Output');
 
 btnSplitArrayOddEven.addEventListener('click', () => {
     const text = inputTextToEdit.value;
@@ -50,8 +52,8 @@ btnSplitArrayOddEven.addEventListener('click', () => {
     const array2 = items.filter((item, index) => index % 2 === 1);
 
     // Display results
-    document.getElementById('array1Output').textContent = JSON.stringify(array1, null, 2);
-    document.getElementById('array2Output').textContent = JSON.stringify(array2, null, 2);    
+    array1Output.textContent = JSON.stringify(array1, null, 2);
+    array2Output.textContent = JSON.stringify(array2, null, 2);    
 });
 
 btnFormatToNewLines.addEventListener('click', () => {
