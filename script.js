@@ -33,6 +33,27 @@ function displayOriginalText(text) {
     outputText.value = text;
 }
 
+
+
+const btnSplitArrayOddEven = document.querySelector('#btn-split-array-odd-even');
+
+btnSplitArrayOddEven.addEventListener('click', () => {
+    const text = inputTextToEdit.value;
+    // Get the text from textarea
+    const rawText = inputTextToEdit.value;
+
+    // Split by line breaks and remove empty lines
+    const items = rawText.split('\n').filter(line => line.trim() !== '');
+
+    // Split into two arrays
+    const array1 = items.filter((item, index) => index % 2 === 0);
+    const array2 = items.filter((item, index) => index % 2 === 1);
+
+    // Display results
+    document.getElementById('array1Output').textContent = JSON.stringify(array1, null, 2);
+    document.getElementById('array2Output').textContent = JSON.stringify(array2, null, 2);    
+});
+
 btnFormatToNewLines.addEventListener('click', () => {
     let text = inputTextToEdit.value;
     displayOriginalText(text);
